@@ -51,7 +51,9 @@ public class BillBurrMMPC {
         fileList = RemoveUnneeded(fileList, directory);
         System.out.println(fileList.size() + " actual files to get");
 
-        DLFile(directory, fileList.get(1).absUrl("href"), fileList.get(1).text());
+        for(Element file : fileList) {
+            DLFile(directory, file.absUrl("href"), file.text());
+        }
     }
 
     private static boolean DoesFileExist(String dir, String file) {
